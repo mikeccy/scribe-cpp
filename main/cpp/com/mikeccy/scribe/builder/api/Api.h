@@ -34,7 +34,7 @@ public:
      *
      * @return fully configured {@link OAuthService}
      */
-    virtual OAuthService createService(OAuthConfig config) = 0;
+    virtual const OAuthService createService(const OAuthConfig& config) = 0;
 };
 
 #endif

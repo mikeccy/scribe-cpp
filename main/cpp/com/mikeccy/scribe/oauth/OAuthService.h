@@ -31,7 +31,7 @@ class OAuthService {
      *
      * @return request token
      */
-    virtual Token getRequestToken() = 0;
+    virtual const Token getRequestToken() = 0;
     
     /**
      * Retrieve the access token
@@ -40,7 +40,8 @@ class OAuthService {
      * @param verifier verifier code
      * @return access token
      */
-    virtual Token getAccessToken(Token requestToken, Verifier verifier) = 0;
+    virtual const Token getAccessToken(const Token& requestToken,
+                                       const Verifier& verifier) = 0;
     
     /**
      * Signs am OAuth request
@@ -48,14 +49,14 @@ class OAuthService {
      * @param accessToken access token (obtained previously)
      * @param request request to sign
      */
-    virtual void signRequest(Token accessToken, OAuthRequest request) = 0;
+    virtual void signRequest(const Token& accessToken, const OAuthRequest& request) = 0;
     
     /**
      * Returns the OAuth version of the service.
      *
      * @return oauth version as string
      */
-    virtual std::string getVersion() = 0;
+    virtual const std::string getVersion() = 0;
     
     /**
      * Returns the URL where you should redirect your users to authenticate
@@ -64,7 +65,7 @@ class OAuthService {
      * @param requestToken the request token you need to authorize
      * @return the URL where you should redirect your users
      */
-    virtual std::string getAuthorizationUrl(Token requestToken) = 0;
+    virtual const std::string getAuthorizationUrl(const Token& requestToken) = 0;
 };
 
 #endif
